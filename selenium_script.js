@@ -14,12 +14,7 @@ const proxyPassword = process.env.PROXYPASSWORD;
 
 // Function to fetch and store Twitter trends
 const fetchTrendsData = async (data) => {
-    console.log('Proxy Host:', proxyHost);
-    console.log('Proxy Port:', proxyPort);
-    console.log('Proxy Username:', proxyUsername);
-    console.log('Proxy Password:', proxyPassword);
     
-
     try {
         // Ensure the MongoDB connection is established before proceeding
         await connectDB();
