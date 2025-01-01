@@ -17,10 +17,10 @@ chrome.setDefaultService(new chrome.ServiceBuilder(chromedriver.path).build());
 
 
 // ProxyMesh Configuration
-// const proxyHost = process.env.PROXYHOST; 
-// const proxyPort = process.env.PROXYPORT; 
-// const proxyUsername = process.env.PROXYUSERNAME;
-// const proxyPassword = process.env.PROXYPASSWORD;
+const proxyHost = process.env.PROXYHOST; 
+const proxyPort = process.env.PROXYPORT; 
+const proxyUsername = process.env.PROXYUSERNAME;
+const proxyPassword = process.env.PROXYPASSWORD;
 
 // Function to fetch and store Twitter trends
 const fetchTrendsData = async (data) => {
@@ -28,24 +28,21 @@ const fetchTrendsData = async (data) => {
     try {
         // Ensure the MongoDB connection is established before proceeding
         await connectDB();
-        // console.log('Proxy Host:', proxyHost);
-        // console.log('Proxy Port:', proxyPort);
-        // console.log('Proxy Username:', proxyUsername);
-        // console.log('Proxy Password:', proxyPassword);
+        
         console.log("Fetching Twitter trends...");
 
         // Launch Selenium WebDriver with ProxyMesh
-        // const proxyUrl = `http://${proxyUsername}:${proxyPassword}@${proxyHost}:${proxyPort}`;
-        // const capabilities = {
-        //     proxy: {
-        //         proxyType: 'manual',
-        //         httpProxy: proxyUrl,
-        //         sslProxy: proxyUrl
-        //     }
-        // };
+        const proxyUrl = `http://${proxyUsername}:${proxyPassword}@${proxyHost}:${proxyPort}`;
+        const capabilities = {
+            proxy: {
+                proxyType: 'manual',
+                httpProxy: proxyUrl,
+                sslProxy: proxyUrl
+            }
+        };
 
-        let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
-        // .withCapabilities(capabilities)
+        let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).withCapabilities(capabilities).build();
+        
         await driver.get('https://x.com/i/flow/login');
 
         // Log in to Twitter
