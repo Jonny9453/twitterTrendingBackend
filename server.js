@@ -6,7 +6,7 @@ const cors = require('cors');
 const { fetchTrendsData } = require('./selenium_script.js');
 // const connectDB= require('./connect.js')
 const{ TrendsModel }= require('./schema.js');
-
+ 
 const app = express();
 const PORT = process.env.PORT||4000;
  // Configure CORS to allow requests from localhost:5173
