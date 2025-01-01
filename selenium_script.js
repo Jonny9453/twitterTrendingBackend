@@ -6,10 +6,7 @@ const axios = require('axios');
 const { TrendsModel } = require('./schema.js');
 const connectDB = require('./connect.js');
 
-let options = new chrome.Options(); 
-options.addArguments('--headless'); 
-options.addArguments('--disable-dev-shm-usage'); 
-options.addArguments('--no-sandbox');
+let options = new chrome.Options();
 
 // ProxyMesh Configuration
 // const proxyHost = process.env.PROXYHOST; 
