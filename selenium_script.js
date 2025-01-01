@@ -6,11 +6,16 @@ const axios = require('axios');
 const { TrendsModel } = require('./schema.js');
 const connectDB = require('./connect.js');
 
+let options = new chrome.Options(); 
+options.addArguments('--headless'); 
+options.addArguments('--disable-dev-shm-usage'); 
+options.addArguments('--no-sandbox');
+
 // ProxyMesh Configuration
-const proxyHost = process.env.PROXYHOST; 
-const proxyPort = process.env.PROXYPORT; 
-const proxyUsername = process.env.PROXYUSERNAME;
-const proxyPassword = process.env.PROXYPASSWORD;
+// const proxyHost = process.env.PROXYHOST; 
+// const proxyPort = process.env.PROXYPORT; 
+// const proxyUsername = process.env.PROXYUSERNAME;
+// const proxyPassword = process.env.PROXYPASSWORD;
 
 // Function to fetch and store Twitter trends
 const fetchTrendsData = async (data) => {
@@ -18,23 +23,24 @@ const fetchTrendsData = async (data) => {
     try {
         // Ensure the MongoDB connection is established before proceeding
         await connectDB();
-        console.log('Proxy Host:', proxyHost);
-        console.log('Proxy Port:', proxyPort);
-        console.log('Proxy Username:', proxyUsername);
-        console.log('Proxy Password:', proxyPassword);
+        // console.log('Proxy Host:', proxyHost);
+        // console.log('Proxy Port:', proxyPort);
+        // console.log('Proxy Username:', proxyUsername);
+        // console.log('Proxy Password:', proxyPassword);
         console.log("Fetching Twitter trends...");
 
         // Launch Selenium WebDriver with ProxyMesh
-        const proxyUrl = `http://${proxyUsername}:${proxyPassword}@${proxyHost}:${proxyPort}`;
-        const capabilities = {
-            proxy: {
-                proxyType: 'manual',
-                httpProxy: proxyUrl,
-                sslProxy: proxyUrl
-            }
-        };
+        // const proxyUrl = `http://${proxyUsername}:${proxyPassword}@${proxyHost}:${proxyPort}`;
+        // const capabilities = {
+        //     proxy: {
+        //         proxyType: 'manual',
+        //         httpProxy: proxyUrl,
+        //         sslProxy: proxyUrl
+        //     }
+        // };
 
-        let driver = await new Builder().forBrowser('chrome').setChromeOptions(new chrome.Options()).withCapabilities(capabilities).build();
+        let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
+        // .withCapabilities(capabilities)
         await driver.get('https://x.com/i/flow/login');
 
         // Log in to Twitter
@@ -104,10 +110,10 @@ async function getTrendingTopics(driver) {
 
 // Function to get the public IP address via ProxyMesh
 async function getIpAddress() {
-    const proxyUrl = `http://${proxyUsername}:${proxyPassword}@${proxyHost}:${proxyPort}`;
-    console.log("Using proxy:", proxyUrl);
-    const encodedUsername = encodeURIComponent(proxyUsername);
-    const encodedPassword = encodeURIComponent(proxyPassword);
+    // const proxyUrl = `http://${proxyUsername}:${proxyPassword}@${proxyHost}:${proxyPort}`;
+    // console.log("Using proxy:", proxyUrl);
+    // const encodedUsername = encodeURIComponent(proxyUsername);
+    // const encodedPassword = encodeURIComponent(proxyPassword);
     try {
         const response = await axios.get('https://api.ipify.org?format=json')
         // , {
