@@ -46,9 +46,11 @@ app.post('/run-script', async (req, res) => {
         return res.status(500).send('Error running the script or fetching data.');
     }
 });
-
+app.get('/', (req, res) => {
+    res.send('Welcome to the Twitter Trends API!');
+});
 app.listen(PORT, (req,res) => {
     console.log(`Server is running on port ${PORT}`);
-    res.json({ message: `Server is running on port ${PORT}` });
+    
     
 });
