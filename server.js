@@ -8,7 +8,7 @@ const connectDB= require('./connect.js')
 const{ TrendsModel }= require('./schema.js');
 
 const app = express();
-
+const PORT = process.env.PORT||4000;
  // Configure CORS to allow requests from localhost:5173
  app.use(cors({
     origin: '*',  // Allow requests from any origin
@@ -47,7 +47,7 @@ app.post('/run-script', async (req, res) => {
     }
 });
 
-app.listen(4000, () => {
+app.listen(PORT, () => {
     console.log(process.env.MONGODB_CONNECTION_LINK)
     console.log('Server is running on port 4000');
 });
