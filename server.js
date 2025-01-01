@@ -48,6 +48,6 @@ app.post('/run-script', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(process.env.MONGODB_CONNECTION_LINK)
+    
     console.log('Server is running on port 4000');
 });
