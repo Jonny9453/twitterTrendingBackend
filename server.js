@@ -2,9 +2,9 @@ require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
-const { exec } = require('child_process');
+// const { exec } = require('child_process');
 const { fetchTrendsData } = require('./selenium_script.js');
-const connectDB= require('./connect.js')
+// const connectDB= require('./connect.js')
 const{ TrendsModel }= require('./schema.js');
 
 const app = express();

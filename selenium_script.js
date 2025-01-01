@@ -7,10 +7,10 @@ const { TrendsModel } = require('./schema.js');
 const connectDB = require('./connect.js');
 
 // ProxyMesh Configuration
-const proxyHost = 'us-ca.proxymesh.com'; 
-const proxyPort = '31280'; 
-const proxyUsername = 'Mayank9453';
-const proxyPassword = 'Brocklesnerreign5@';
+const proxyHost = process.env.PROXYHOST; 
+const proxyPort = process.env.PROXYPORT; 
+const proxyUsername = process.env.PROXYUSERNAME;
+const proxyPassword = process.env.PROXYPASSWORD;
 
 // Function to fetch and store Twitter trends
 const fetchTrendsData = async (data) => {
