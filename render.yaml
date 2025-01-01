@@ -1,8 +1,14 @@
+# render.yaml
+
 services:
-  - type: web
-    name: node-selenium-app
+  - name: selenium-app
+    type: web
     env: node
-    plan: free
     buildCommand: npm install
     startCommand: node server.js
-    dockerfilePath: ./Dockerfile
+    plan: free  # You can upgrade to a paid plan for more resources.
+    region: oregon  # Select a region close to your target audience.
+    runtime:
+      nodeVersion: 22.12.0  # Ensure it matches your local Node.js version.
+    disk:
+      sizeGB: 1  # Set disk space if required for temporary storage.
