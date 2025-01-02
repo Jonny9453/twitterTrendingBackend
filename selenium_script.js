@@ -5,17 +5,20 @@ const uuid = require('uuid');
 const axios = require('axios');
 const { TrendsModel } = require('./schema.js');
 const connectDB = require('./connect.js');
-const chromedriver = require('chromedriver');
+// const chromedriver = require('chromedriver');
 
 let options = new chrome.Options();
 options.addArguments("--headless", "--disable-gpu", "--no-sandbox"); // Optional for headless mode
 
-// Set the ChromeDriver service
-chrome.setDefaultService(new chrome.ServiceBuilder(chromedriver.path).build());
+// Create a new ChromeDriver service
+// const serviceBuilder = new chrome.ServiceBuilder(chromedriver.path);
+// const service = serviceBuilder.build();
+
+// // Start the ChromeDriver service
+// service.start();
 
 
 
- 
 // ProxyMesh Configuration
 const proxyHost = process.env.PROXYHOST; 
 const proxyPort = process.env.PROXYPORT; 
