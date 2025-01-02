@@ -8,7 +8,7 @@ const connectDB = require('./connect.js');
 // const chromedriver = require('chromedriver');
 
 let options = new chrome.Options();
-options.addArguments("--headless", "--disable-gpu", "--no-sandbox"); // Optional for headless mode
+// options.addArguments("--headless", "--disable-gpu", "--no-sandbox"); // Optional for headless mode
 
 // Create a new ChromeDriver service
 // const serviceBuilder = new chrome.ServiceBuilder(chromedriver.path);
